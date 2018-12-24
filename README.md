@@ -1,29 +1,13 @@
 # vue-temperature-gauge
+Temperature gauge for vue.js <br>
+v0.0.1
 
-## Project setup
-```
-yarn install
-```
+<img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
-### Compiles and minifies for production
+## Setup
+install:
+```bash
+npm install vue-temperature-gauge --save
 ```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

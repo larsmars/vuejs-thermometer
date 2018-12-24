@@ -7,7 +7,7 @@ v0.0.1
 Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
 ## Setup
-install:
+Install:
 ```bash
-npm install vue-temperature-gauge --save
+This component is not ready yet
 ```

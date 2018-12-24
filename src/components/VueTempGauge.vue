@@ -1,5 +1,5 @@
 <template>
-  <div class="temp-gauge" :style="gaugeStyles" :class="customClass">
+  <div class="vue-temp-gauge" :style="gaugeStyles" :class="customClass">
     {{ value }} {{ scale }}
   </div>
 </template>
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.temp-gauge {
+.vue-temp-gauge {
   background-color: red;
 }
 </style>

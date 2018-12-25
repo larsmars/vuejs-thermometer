@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <vue-thermometer/>
+    <vue-thermometer :value="17" :min="-20" :max="30"/>
   </div>
 </template>
 

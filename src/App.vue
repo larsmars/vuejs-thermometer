@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <vue-temp-gauge/>
+    <vue-thermometer/>
   </div>
 </template>
 
 <script>
-import VueTempGauge from '../src/components/VueTempGauge.vue'
+import VueThermometer from '../src/components/VueThermometer.vue'
 
 export default {
   name: 'app',
   components: {
-    VueTempGauge
+    VueThermometer
   }
 }
 </script>

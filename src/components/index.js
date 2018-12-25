@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
-import VueTempGauge from './VueTempGauge.vue'
+import VueThermometer from './VueThermometer.vue'
 
-Vue.component('VueTempGauge', VueTempGauge)
+Vue.component('VueThermometer', VueThermometer)
 
-export { VueTempGauge }
+export { VueThermometer }
 
-export default VueTempGauge
+export default VueThermometer

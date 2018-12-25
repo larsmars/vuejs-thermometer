@@ -1,12 +1,12 @@
 {
-  "name": "vue-temperature-gauge",
-  "version": "0.0.2",
+  "name": "vuejs-thermometer",
+  "version": "0.0.1",
   "private": false,
-  "main": "./dist/VueTempGauge.common.js",
+  "main": "./dist/VueThermometer.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name VueTempGauge ./src/components/index.js",
+    "build-bundle": "vue-cli-service build --target lib --name VueThermometer ./src/components/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -61,7 +61,7 @@
     "vue",
     "components",
     "temperature",
-    "gauge",
+    "thermometer",
     "svg"
   ]
 }

@@ -1,49 +1,41 @@
 <template>
   <div class="vue-thermometer" :class="customClass">
-    {{ value }} {{ scale }}
-    <svg xmlns="http://www.w3.org/2000/svg" width="256" height="512">
+    <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
     <g>
       <g id="g2984"> <!-- ticks/lines -->
         <path v-for="(tick, index) in ticks" :key="index" :stroke="defaultOptions.thermo.tickColor" :stroke-width="defaultOptions.thermo.tickWidth" :stroke-miterlimit="defaultOptions.thermo.tickWidth" :id="'path2931' + index" :d="offsetLine(index)"/>
       </g>
       <!-- set the height attribute to something between 0 and 10.  Can be floating-point. -->
       <!-- Frame round thermo black/white-->
-      <path fill="#fcf9f9" fill-rule="nonzero" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" id="rect2968" d="m41.414581,33c-9.255863,0 -16.707302,7.136002 -16.707302,16l0,372.28125c-9.987129,5.535095 -16.707279,15.880676 -16.707279,27.71875c0,17.664001 14.96973,32 33.414581,32c18.444828,0 33.414551,-14.335999 33.414551,-32c0,-11.838074 -6.720184,-22.183655 -16.707272,-27.71875l0,-372.28125c0,-8.863998 -7.45145,-16 -16.707279,-16z"/>
-      <rect fill="#fcf9f9" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="16" rx="16" y="33" x="24.707283" height="416" width="33.414566" id="rect2922"/>
-      <rect fill="#fcf9f9" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" y="385" x="24.707283" height="64" width="33.414558" id="rect3021"/>
-      <path fill="#fcf9f9" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" d="m74.829132,449a33.41457,32 0 1 1 -66.829132,0a33.41457,32 0 1 1 66.829132,0z" id="path2924"/>
+      <!-- <path fill="#fcf9f9" fill-rule="nonzero" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" id="rect2968" d="m41.414581,33c-9.255863,0 -16.707302,7.136002 -16.707302,16l0,372.28125c-9.987129,5.535095 -16.707279,15.880676 -16.707279,27.71875c0,17.664001 14.96973,32 33.414581,32c18.444828,0 33.414551,-14.335999 33.414551,-32c0,-11.838074 -6.720184,-22.183655 -16.707272,-27.71875l0,-372.28125c0,-8.863998 -7.45145,-16 -16.707279,-16z"/> -->
+      <rect :fill="defaultOptions.thermo.backgroundColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="16" rx="16" :y="glassOffset" x="24.707283" :height="glassHeight" :width="glassWidth" id="rect2922"/>
+      <path :fill="defaultOptions.thermo.backgroundColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" d="m74.829132,449a33.41457,32 0 1 1 -66.829132,0a33.41457,32 0 1 1 66.829132,0z" id="path2924"/>
 
       <!-- this is the round buttom thing -->
-      <text transform="rotate(-0.000146047, 188.988, 214.35) matrix(6.31169, 0, 0, 0.394647, -808.247, 123.338)" xml:space="preserve" text-anchor="middle" font-family="Arial" font-size="24" id="svg_1" y="239" x="158" stroke-width="0" stroke="#000000" fill="#000000"/>
-      <text transform="matrix(8.21429, 0, 0, 1, -1673.71, 0)" xml:space="preserve" text-anchor="middle" font-family="Arial" font-size="0.001" id="svg_3" y="186" x="225" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#000000">5000</text>
-      <ellipse fill="#FF0000" stroke="#000000" stroke-width="0" cx="41.499996" cy="448.500003" id="svg_2" rx="29.000001" ry="28.499999"/>
+      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="41.499996" cy="448.500003" id="svg_2" rx="29.000001" ry="28.499999"/>
 
-      <!-- <text :fill="defaultOptions.text.color" :stroke="defaultOptions.text.color" stroke-width="0" x="143.5" y="74" id="svg_4" font-size="24" font-family="Arial" text-anchor="middle" xml:space="preserve">100%</text> -->
+      <!-- this is round buttom wrapper -->
+      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="40.499996" cy="448.500003" rx="29.000001" ry="28.499999" id="svg_5"/>
+      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="40.499996" cy="449.500003" rx="29.000001" ry="28.499999" id="svg_6"/>
+      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="41.999996" cy="449.500003" rx="29.5" ry="28.499999" id="svg_7"/>
 
       <!-- this is the bar/temp height -->
-      <ellipse fill="#FF0000" stroke="#000000" stroke-width="0" cx="40.499996" cy="448.500003" rx="29.000001" ry="28.499999" id="svg_5"/>
-      <ellipse fill="#FF0000" stroke="#000000" stroke-width="0" cx="40.499996" cy="449.500003" rx="29.000001" ry="28.499999" id="svg_6"/>
-      <ellipse fill="#FF0000" stroke="#000000" stroke-width="0" cx="41.999996" cy="449.500003" rx="29.5" ry="28.499999" id="svg_7"/>
-      <rect fill="#FF0000" stroke="#000000" stroke-width="0" x="27.5" y="127.00036" width="27" height="296.999941" id="svg_8"/>
-      <rect fill="#FF0000" stroke="#000000" stroke-width="0" x="71.5" y="358" width="46" height="0" id="svg_9"/>
-      <rect fill="#FF0000" stroke="#000000" stroke-width="0" x="54.5" y="320" width="64" height="0" id="svg_10"/>
-
+      <rect :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" x="27.5" :y="thermoOffset" :width="thermoWidth" :height="thermoHeight" id="svg_8"/>
       <!-- this is the temp values -->
-      <text v-for="(tick, index) in ticks" :key="index" :id="'svg_10' + index" :fill="defaultOptions.text.color" :stroke="defaultOptions.text.color" stroke-width="0" x="138.5" :y="offset(74, index)" :font-size="defaultOptions.text.fontSize" :font-family="defaultOptions.text.fontFamily" text-anchor="middle" xml:space="preserve">{{ tick }}</text>
+      <text v-for="(tick, index) in ticks" :key="index" :id="'svg_10' + index" :fill="defaultOptions.text.color" :stroke="defaultOptions.text.color" stroke-width="0" x="128.5" :y="offsetText(index)" :font-size="defaultOptions.text.fontSize" :font-family="defaultOptions.text.fontFamily" text-anchor="middle" xml:space="preserve">{{ tick }}{{ scale}}</text>
     </g>
     </svg>
   </div>
 </template>
 
 <script>
-const _defaultStep = 32
 
 export default {
   props: {
-    value: {
+    level: {
       type: Number,
-      default: 0,
-      required: true
+      default: 100,
+      required: false
     },
     min: {
       type: Number,
@@ -73,29 +65,20 @@ export default {
     this.defaultOptions = {
       text: {
         color: 'black',
-        shadowEnable: true,
-        shadowColor: '#000000',
         fontSize: 24,
-        fontFamily: 'Helvetica',
-        dynamicPosition: false,
-        hideText: false
+        textAdjustment: 6,
+        fontFamily: 'Arial'
       },
       thermo: {
-        color: '#2dbd2d',
-        backgroundColor: '#C0C0C0',
+        color: '#FF0000',
+        backgroundColor: '#fcf9f9',
         ticks: 10,
         tickColor: 'black',
-        tickWidth: '4'
+        tickWidth: '2'
       },
       layout: {
-        height: 35,
-        width: 140,
-        verticalTextAlign: 61,
-        horizontalTextAlign: 43,
-        zeroOffset: 0,
-        strokeWidth: 30,
-        progressPadding: 0,
-        type: 'line'
+        height: 700,
+        width: 160
       }
     }
   },
@@ -110,8 +93,14 @@ export default {
     }
   },
   computed: {
+    width () {
+      return this.defaultOptions.layout.width
+    },
+    height () {
+      return this.defaultOptions.layout.height
+    },
     tickStep () {
-      return (Math.abs(this.min) + Math.abs(this.max)) / this.defaultOptions.thermo.ticks
+      return (Math.abs(this.min) + Math.abs(this.max)) / (this.defaultOptions.thermo.ticks - 1)
     },
     ticks () {
       let ticks = []
@@ -121,6 +110,38 @@ export default {
         maxValue -= this.tickStep
       }
       return ticks
+    },
+    thermoWidth () {
+      return this.defaultOptions.layout.width / 6
+    },
+    glassWidth () {
+      return (this.defaultOptions.layout.width / 6) + 6
+    },
+    tickWidth () {
+      return Math.ceil((this.defaultOptions.layout.width) / 10)
+    },
+    glassOffset () {
+      return this.defaultOptions.layout.height * 0.025
+    },
+    glassHeight () {
+      return this.defaultOptions.layout.height * 0.95
+    },
+    tickStepSize () {
+      return (this.glassHeight / this.defaultOptions.thermo.ticks)
+    },
+    thermoOffset () {
+      const _topOffset = 5
+      let offset = this.glassHeight - this.thermoHeight
+      return this.glassOffset + _topOffset + offset
+    },
+    thermoHeight () {
+      return (this.level * (this.glassHeight / 100))
+    },
+    svgHeight () {
+      return this.defaultOptions.layout.height + 100
+    },
+    svgWidth () {
+      return this.defaultOptions.layout.width + 70
     }
   },
   methods: {
@@ -138,14 +159,15 @@ export default {
         }
       }
     },
-    offset (y, index) {
-      let offset = index * _defaultStep
-      return (y + offset)
+    offsetText (index) {
+      let base = (this.tickStepSize / this.defaultOptions.thermo.ticks) + this.glassOffset + this.defaultOptions.text.textAdjustment
+      let offset = index * this.tickStepSize
+      return (Number(offset) + Number(base))
     },
     offsetLine (index) {
-      let base = 65
-      let offset = index * _defaultStep
-      let length = index % 2 === 0 ? 'l20' : 'l40'
+      let base = (this.tickStepSize / this.defaultOptions.thermo.ticks) + this.glassOffset
+      let offset = index * this.tickStepSize
+      let length = index % 2 === 0 ? 'l' + Math.ceil(this.tickWidth) : 'l' + Math.ceil(this.tickWidth + this.tickWidth)
       offset = Number(offset) + Number(base) + length
       return 'm58.121861,' + offset + '.121853,0'
     }
@@ -162,6 +184,7 @@ export default {
 
 <style lang="scss" scoped>
 .vue-thermometer {
+  display: inline-flex;
   background-color: gray;
 }
 </style>

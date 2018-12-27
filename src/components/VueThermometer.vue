@@ -29,7 +29,7 @@ export default {
   props: {
     level: {
       type: Number,
-      default: 100,
+      default: 0,
       required: false
     },
     min: {

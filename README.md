@@ -9,5 +9,56 @@ Do you have questions or want a new feature? Use the "Issues" section :point_lef
 ## Setup
 Install:
 ```bash
-This component is not ready yet
+  npm install vuejs-thermometer --save
 ```
+
+Import: (in your main.js)
+```javascript
+import VueThermometer from 'vuejs-thermometer'
+Vue.use(VueThermometer)
+```
+## Usage
+Use: (in your local .vue file/component, html section)
+
+```xml
+    <vue-thermometer
+      :level="40"
+      :min="-20"
+      :max="25"
+    />
+
+<!-- Options struct: -->
+options: {
+  text: {
+    color: 'black',
+    fontSize: 8,
+    textAdjustmentY: 2,
+    fontFamily: 'Arial',
+    textEnabled: true
+  },
+  thermo: {
+    color: '#FF0000',
+    backgroundColor: '#fcf9f9',
+    frameColor: 'black',
+    ticks: 10,
+    ticksEnabled: true,
+    tickColor: 'black',
+    tickWidth: '1'
+  },
+  layout: {
+    height: 300,
+    width: 100
+  }
+}
+```
+
+### Properties
+
+| Name            | Type             | Default      | Description            |
+| ---             | ---              | ---          | ---                    |
+| level           | Number           | 0            | Value of progressbar % |
+| min             | Number           | -20          | Min value|
+| max             | Number           | 25           | Max value |
+| scale           | String           | °C           | Scale format |
+| options         | Object           | Object       | Object struct |
+| customClass     | String           | N/A          | Custom css class |

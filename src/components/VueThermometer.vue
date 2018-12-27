@@ -27,19 +27,19 @@ const _textOffset = 0.75
 
 export default {
   props: {
-    level: {
+    value: {
       type: Number,
       default: 0,
       required: false
     },
     min: {
       type: Number,
-      default: -10,
+      default: -20,
       required: false
     },
     max: {
       type: Number,
-      default: 20,
+      default: 25,
       required: false
     },
     scale: {
@@ -75,7 +75,7 @@ export default {
         tickWidth: '1'
       },
       layout: {
-        height: 300,
+        height: 500,
         width: 100
       }
     }
@@ -138,11 +138,14 @@ export default {
       return (this.glassHeight / this.defaultOptions.thermo.ticks)
     },
     thermoOffset () {
-      let offset = this.glassHeight - this.thermoHeight
+      let offset = Math.ceil(this.glassHeight - this.thermoHeight)
       return (this.glassOffset + offset)
     },
+    level () {
+      return Math.ceil(((this.value - this.min) * 100) / (this.max - this.min))
+    },
     thermoHeight () {
-      return (this.level * (this.glassHeight / 100))
+      return (this.level * ((this.glassHeight) / 100)) + ((((100 - this.level) / 100) * this.glassHeight) * 0.075)
     },
     roundDotPositionX () {
       return this.baseXOffset + this.glassWidth * 0.5

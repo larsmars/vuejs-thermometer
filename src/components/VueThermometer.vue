@@ -2,33 +2,28 @@
   <div class="vue-thermometer" :class="customClass">
     <svg xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
     <g>
-      <g id="g2984"> <!-- ticks/lines -->
-        <path v-for="(tick, index) in ticks" :key="index" :stroke="defaultOptions.thermo.tickColor" :stroke-width="defaultOptions.thermo.tickWidth" :stroke-miterlimit="defaultOptions.thermo.tickWidth" :id="'path2931' + index" :d="offsetLine(index)"/>
+      <g id="11"> <!-- ticks/lines -->
+        <path v-show="defaultOptions.thermo.ticksEnabled" v-for="(tick, index) in ticks" :key="index" :stroke="defaultOptions.thermo.tickColor" :stroke-width="defaultOptions.thermo.tickWidth" :stroke-miterlimit="defaultOptions.thermo.tickWidth" :id="'12' + index" :d="offsetLine(index)"/>
       </g>
-      <!-- set the height attribute to something between 0 and 10.  Can be floating-point. -->
       <!-- Frame round thermo black/white-->
-      <!-- <path fill="#fcf9f9" fill-rule="nonzero" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" id="rect2968" d="m41.414581,33c-9.255863,0 -16.707302,7.136002 -16.707302,16l0,372.28125c-9.987129,5.535095 -16.707279,15.880676 -16.707279,27.71875c0,17.664001 14.96973,32 33.414581,32c18.444828,0 33.414551,-14.335999 33.414551,-32c0,-11.838074 -6.720184,-22.183655 -16.707272,-27.71875l0,-372.28125c0,-8.863998 -7.45145,-16 -16.707279,-16z"/> -->
-      <rect :fill="defaultOptions.thermo.backgroundColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="16" rx="16" :y="glassOffset" x="24.707283" :height="glassHeight" :width="glassWidth" id="rect2922"/>
-      <path :fill="defaultOptions.thermo.backgroundColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" d="m74.829132,449a33.41457,32 0 1 1 -66.829132,0a33.41457,32 0 1 1 66.829132,0z" id="path2924"/>
+      <circle :cx="roundDotPositionX" :cy="glassHeight" :r="(glassWidth * 0.9) + 2" :stroke="defaultOptions.thermo.frameColor" stroke-width="4" :fill="defaultOptions.thermo.color" />
+      <rect :fill="defaultOptions.thermo.frameColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="16" rx="16" :y="glassOffset - 2" :x="baseXOffset - 2" :height="glassHeight + 4" :width="glassWidth + 4" id="14"/>
+      <rect :fill="defaultOptions.thermo.backgroundColor" fill-rule="nonzero" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="16" rx="16" :y="glassOffset" :x="baseXOffset" :height="glassHeight" :width="glassWidth" id="15"/>
 
-      <!-- this is the round buttom thing -->
-      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="41.499996" cy="448.500003" id="svg_2" rx="29.000001" ry="28.499999"/>
-
-      <!-- this is round buttom wrapper -->
-      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="40.499996" cy="448.500003" rx="29.000001" ry="28.499999" id="svg_5"/>
-      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="40.499996" cy="449.500003" rx="29.000001" ry="28.499999" id="svg_6"/>
-      <ellipse :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" cx="41.999996" cy="449.500003" rx="29.5" ry="28.499999" id="svg_7"/>
+      <!-- this is the round buttom thing center of it (red) -->
+      <circle :cx="roundDotPositionX" :cy="glassHeight" :r="glassWidth * 0.9" :stroke="defaultOptions.thermo.backgroundColor" stroke-width="4" :fill="defaultOptions.thermo.color" />
 
       <!-- this is the bar/temp height -->
-      <rect :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" x="27.5" :y="thermoOffset" :width="thermoWidth" :height="thermoHeight" id="svg_8"/>
+      <rect :fill="defaultOptions.thermo.color" stroke="#000000" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-dashoffset="0" ry="8" rx="8" :x="baseXOffset + 3" :y="thermoOffset" :width="thermoWidth" :height="thermoHeight" id="svg_18"/>
       <!-- this is the temp values -->
-      <text v-for="(tick, index) in ticks" :key="index" :id="'svg_10' + index" :fill="defaultOptions.text.color" :stroke="defaultOptions.text.color" stroke-width="0" x="128.5" :y="offsetText(index)" :font-size="defaultOptions.text.fontSize" :font-family="defaultOptions.text.fontFamily" text-anchor="middle" xml:space="preserve">{{ tick }}{{ scale}}</text>
+      <text v-show="defaultOptions.text.textEnabled" v-for="(tick, index) in ticks" :key="index" :id="'svg_19' + index" :fill="defaultOptions.text.color" :stroke="defaultOptions.text.color" stroke-width="0" :x="textSpacing" :y="offsetText(index)" :font-size="defaultOptions.text.fontSize" :font-family="defaultOptions.text.fontFamily" text-anchor="middle" xml:space="preserve">{{ tick }}{{ scale}}</text>
     </g>
     </svg>
   </div>
 </template>
 
 <script>
+const _textOffset = 0.75
 
 export default {
   props: {
@@ -65,20 +60,23 @@ export default {
     this.defaultOptions = {
       text: {
         color: 'black',
-        fontSize: 24,
-        textAdjustment: 6,
-        fontFamily: 'Arial'
+        fontSize: 8,
+        textAdjustmentY: 2,
+        fontFamily: 'Arial',
+        textEnabled: true
       },
       thermo: {
         color: '#FF0000',
         backgroundColor: '#fcf9f9',
+        frameColor: 'black',
         ticks: 10,
+        ticksEnabled: true,
         tickColor: 'black',
-        tickWidth: '2'
+        tickWidth: '1'
       },
       layout: {
-        height: 700,
-        width: 160
+        height: 300,
+        width: 100
       }
     }
   },
@@ -93,11 +91,17 @@ export default {
     }
   },
   computed: {
+    baseXOffset () {
+      return this.defaultOptions.layout.width / 5
+    },
     width () {
       return this.defaultOptions.layout.width
     },
     height () {
       return this.defaultOptions.layout.height
+    },
+    textSpacing () {
+      return this.width * _textOffset
     },
     tickStep () {
       return (Math.abs(this.min) + Math.abs(this.max)) / (this.defaultOptions.thermo.ticks - 1)
@@ -118,30 +122,33 @@ export default {
       return (this.defaultOptions.layout.width / 6) + 6
     },
     tickWidth () {
-      return Math.ceil((this.defaultOptions.layout.width) / 10)
+      return Math.ceil((this.defaultOptions.layout.width) / 12)
     },
     glassOffset () {
-      return this.defaultOptions.layout.height * 0.025
+      return this.defaultOptions.layout.height * 0.02
     },
     glassHeight () {
-      return this.defaultOptions.layout.height * 0.95
+      let height = this.defaultOptions.layout.height * 0.95
+      while ((this.defaultOptions.layout.height - height) < 30) {
+        height -= 1
+      }
+      return height
     },
     tickStepSize () {
       return (this.glassHeight / this.defaultOptions.thermo.ticks)
     },
     thermoOffset () {
-      const _topOffset = 5
       let offset = this.glassHeight - this.thermoHeight
-      return this.glassOffset + _topOffset + offset
+      return (this.glassOffset + offset)
     },
     thermoHeight () {
       return (this.level * (this.glassHeight / 100))
     },
-    svgHeight () {
-      return this.defaultOptions.layout.height + 100
+    roundDotPositionX () {
+      return this.baseXOffset + this.glassWidth * 0.5
     },
-    svgWidth () {
-      return this.defaultOptions.layout.width + 70
+    roundDot () {
+      return 'm74.829132,' + this.glassHeight + 'a33.41457,32 0 1 1 -66.829132,0a33.41457,32 0 1 1 66.829132,0z'
     }
   },
   methods: {
@@ -160,16 +167,17 @@ export default {
       }
     },
     offsetText (index) {
-      let base = (this.tickStepSize / this.defaultOptions.thermo.ticks) + this.glassOffset + this.defaultOptions.text.textAdjustment
+      let base = (this.tickStepSize / this.defaultOptions.thermo.ticks) + this.glassOffset + this.defaultOptions.text.textAdjustmentY
       let offset = index * this.tickStepSize
       return (Number(offset) + Number(base))
     },
     offsetLine (index) {
       let base = (this.tickStepSize / this.defaultOptions.thermo.ticks) + this.glassOffset
-      let offset = index * this.tickStepSize
-      let length = index % 2 === 0 ? 'l' + Math.ceil(this.tickWidth) : 'l' + Math.ceil(this.tickWidth + this.tickWidth)
-      offset = Number(offset) + Number(base) + length
-      return 'm58.121861,' + offset + '.121853,0'
+      let offsetY = index * this.tickStepSize
+      let length = index % 2 === 0 ? 'l' + Math.ceil(this.tickWidth * 1.4) : 'l' + Math.ceil(this.tickWidth + this.tickWidth)
+      offsetY = Number(offsetY) + Number(base) + length
+      let offsetX = 'm' + Number(this.defaultOptions.layout.width * 0.4) + '.121861,'
+      return offsetX + offsetY + '.121853,0' // todo this fix x offset
     }
   },
   watch: {
@@ -184,7 +192,6 @@ export default {
 
 <style lang="scss" scoped>
 .vue-thermometer {
-  display: inline-flex;
-  background-color: gray;
+  display: flex;
 }
 </style>

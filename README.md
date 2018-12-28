@@ -5,6 +5,9 @@ v0.0.3
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
 [Live demo](http://softwarefun.no/#/thermometer)
+<br>
+
+<img src="http://softwarefun.no/demo_temp.png" height="300">
 
 Do you have questions or want a new feature? Use the "Issues" section :point_left:
 
@@ -33,7 +36,7 @@ Use: (in your local .vue file/component, html section)
 options: {
   text: {
     color: 'black',
-    fontSize: 8,
+    fontSize: 10,
     textAdjustmentY: 2,
     fontFamily: 'Arial',
     textEnabled: true
@@ -48,8 +51,8 @@ options: {
     tickWidth: '1'
   },
   layout: {
-    height: 500,
-    width: 100
+    height: 300,
+    width: 90
   }
 }
 ```

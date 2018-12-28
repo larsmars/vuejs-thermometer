@@ -60,7 +60,7 @@ export default {
     this.defaultOptions = {
       text: {
         color: 'black',
-        fontSize: 8,
+        fontSize: 10,
         textAdjustmentY: 2,
         fontFamily: 'Arial',
         textEnabled: true
@@ -75,8 +75,8 @@ export default {
         tickWidth: '1'
       },
       layout: {
-        height: 500,
-        width: 100
+        height: 300,
+        width: 90
       }
     }
   },

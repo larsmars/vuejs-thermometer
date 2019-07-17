@@ -1,6 +1,6 @@
 {
   "name": "vuejs-thermometer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": false,
   "main": "./dist/VueThermometer.common.js",
   "scripts": {

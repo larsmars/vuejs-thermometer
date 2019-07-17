@@ -104,6 +104,19 @@ export default {
       return this.width * _textOffset
     },
     tickStep () {
+      return (Math.abs(this.max - this.min)) / (this.defaultOptions.thermo.ticks - 1)
+    },
+    ticks () {
+      let ticks = []
+      let maxValue = this.max
+      for (let i = 0; i < (this.defaultOptions.thermo.ticks - 1); i++) {
+        ticks.push(Math.round(maxValue))
+        maxValue -= this.tickStep
+      } ticks.push(this.min)
+      return ticks
+    },
+    /*
+    tickStep () {
       return (Math.abs(this.min) + Math.abs(this.max)) / (this.defaultOptions.thermo.ticks - 1)
     },
     ticks () {
@@ -115,6 +128,7 @@ export default {
       }
       return ticks
     },
+    */
     thermoWidth () {
       return this.defaultOptions.layout.width / 6
     },

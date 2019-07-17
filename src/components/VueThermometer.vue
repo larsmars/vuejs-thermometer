@@ -115,20 +115,6 @@ export default {
       } ticks.push(this.min)
       return ticks
     },
-    /*
-    tickStep () {
-      return (Math.abs(this.min) + Math.abs(this.max)) / (this.defaultOptions.thermo.ticks - 1)
-    },
-    ticks () {
-      let ticks = []
-      let maxValue = this.max
-      for (let i = 0; i < this.defaultOptions.thermo.ticks; i++) {
-        ticks.push(Math.ceil(maxValue))
-        maxValue -= this.tickStep
-      }
-      return ticks
-    },
-    */
     thermoWidth () {
       return this.defaultOptions.layout.width / 6
     },

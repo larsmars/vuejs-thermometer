@@ -1,7 +1,10 @@
 {
   "name": "vuejs-thermometer",
-  "version": "0.0.7",
+  "version": "0.1.0",
+  "description": "Thermometer for Vue.js",
   "private": false,
+  "author": "LMH, lars@softwarefun.no , softwarefun.no",
+  "license": "MIT",
   "main": "./dist/VueThermometer.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,9 +12,7 @@
     "build-bundle": "vue-cli-service build --target lib --name VueThermometer ./src/components/index.js",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "vue": "^2.6.10"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
@@ -55,8 +56,6 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "author": "Lars M Hejll",
-  "license": "MIT",
   "keywords": [
     "vue",
     "components",

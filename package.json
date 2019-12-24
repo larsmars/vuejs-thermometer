@@ -1,6 +1,6 @@
 {
   "name": "vuejs-thermometer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Thermometer for Vue.js",
   "author": "LMH, lars@softwarefun.no , softwarefun.no",
   "license": "MIT",
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.2",
+    "@vue/cli-service": "^4.1.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",

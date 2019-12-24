@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <vue-thermometer :value="15" :min="-20" :max="25"/>
+    <p>Value: 15, Min: -20, Max: 25 </p>
   </div>
 </template>
 
@@ -14,13 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

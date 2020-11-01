@@ -1,6 +1,6 @@
 # vuejs-thermometer
 Thermometer component for vue.js <br>
-v0.1.2
+v0.1.3
 
 <img src="https://img.shields.io/badge/license-MIT-green.svg" /> <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg" /> <img src="https://img.shields.io/badge/bugs-0-red.svg" />
 
@@ -26,11 +26,11 @@ Vue.use(VueThermometer)
 Use: (in your local .vue file/component, html section)
 
 ```xml
-    <vue-thermometer
-      :level="40"
-      :min="-20"
-      :max="25"
-    />
+<vue-thermometer
+  :level="40"
+  :min="-20"
+  :max="25"
+/>
 
 <!-- Options struct: -->
 options: {

@@ -17,7 +17,7 @@ Install:
   npm install vuejs-thermometer --save
 ```
 
-Import: (in your main.js)
+Import:
 ```javascript
 import VueThermometer from 'vuejs-thermometer'
 Vue.use(VueThermometer)
@@ -26,11 +26,11 @@ Vue.use(VueThermometer)
 Use: (in your local .vue file/component, html section)
 
 ```xml
-<vue-thermometer
-  :level="40"
-  :min="-20"
-  :max="25"
-/>
+    <vue-thermometer
+      :value="5"
+      :min="-20"
+      :max="25"
+    />
 
 <!-- Options struct: -->
 options: {

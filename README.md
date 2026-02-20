@@ -1,4 +1,5 @@
 # vuejs-thermometer
+### ⛔️ DEPRECATED: This project is no longer maintained. ⛔️ <br>
 Thermometer component for vue.js <br>
 v0.1.3
 
